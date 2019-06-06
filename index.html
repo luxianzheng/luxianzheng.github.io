@@ -1,56 +1,12 @@
-<meta charset="utf-8" />
-<style>
-    #c {
-        border: 1px solid lightgray;
-    }
-</style>
-<canvas id="c" width="500" height="300"></canvas>
+<meta charset="utf-8">
+<script src="flag.js"></script>
 <script>
-    let c = document.querySelector("#c");
-
-    const WIDTH = c.width;
-    const HEIGHT = c.height;
-
-    const FRAMES = 5;
-
-    let ctx = c.getContext("2d");
-    
-    ctx.beginPath();
-    
-    let logo = new Image();
-    logo.src = "timg1.jpg";
-
-    logo.onload = function() {
-        const IMG_WIDTH = logo.width;
-        const IMG_HEIGHT = logo.height;
-
-        // 每一帧图片的宽度
-        const FRAME_WIDTH = IMG_WIDTH / FRAMES;
-
-        // 每帧的左上点x坐标
-        let x;
-        // 当前第几帧（0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7 0 1。。。） 
-        let i = 0;
-
-        // 向上跑的顶部偏移
-        let top = 0;
-        setInterval(function() {
-            ctx.clearRect(0, 0, WIDTH, HEIGHT);
-            let current_frame = i % 15;
-            let current_frame1 = i % 5;
-            // console.log(current_frame);
-            // console.log(current_frame * FRAME_WIDTH);
-            let h;
-            if(current_frame >= 0 && current_frame < 5) {
-                h = 0;
-            } else if(current_frame >= 5 && current_frame < 10) {
-                h = IMG_HEIGHT / 3 ; 
-            } else {
-                h = IMG_HEIGHT / 3 * 2;
-            }
-            i ++;
-            ctx.drawImage(logo, current_frame1 * FRAME_WIDTH, h, FRAME_WIDTH, IMG_HEIGHT / 3, (WIDTH - FRAME_WIDTH) / 2, 100, FRAME_WIDTH, IMG_HEIGHT / 3);
-        }, 1000 / 16);
+    window.onload = function() {
+        mycav.doInit("#c1");
+        mycav.doInit("#c2");
+        mycav.doInit("#c3");
     };
-    
 </script>
+<canvas id="c1" width="400" height="200" on="#0654ba" off="lightgrey" circle="white" status="on"></canvas>
+<canvas id="c3" width="200" height="100" on="#0654ba" off="lightgrey" circle="white" status="on"></canvas>
+<canvas id="c2" width="100" height="50" on="#0654ba" off="lightgrey" circle="white" status="on"></canvas>
